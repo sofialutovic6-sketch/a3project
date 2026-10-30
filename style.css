@@ -1,9 +1,74 @@
-:root { font-family: system-ui, sans-serif; background: #11151a; color: #f1f4f2; }
+:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  background: #11151a;
+  color: #f1f4f2;
+}
+
+* { box-sizing: border-box; }
+
 body { margin: 0; }
-main { max-width: 900px; min-height: 100vh; margin: auto; padding: 32px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; }
+
+main {
+  width: min(900px, 100%);
+  min-height: 100vh;
+  margin: auto;
+  padding: clamp(20px, 5vw, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 header { max-width: 620px; }
-h1 { font-size: 5rem; margin: 0; }
-#pad { position: relative; flex: 1; min-height: 340px; border: 1px solid #455d5c; border-radius: 22px; touch-action: none; }
-#hint { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-#cursor { display: none; position: absolute; width: 26px; height: 26px; margin: -13px; border-radius: 50%; background: #8ff8d2; pointer-events: none; }
-footer { display: flex; justify-content: space-between; }
+
+.eyebrow {
+  color: #82d6bc;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+h1 { margin: 0; font-size: clamp(3rem, 9vw, 6rem); line-height: 1; }
+header p:last-child { color: #b8c3c2; line-height: 1.5; }
+
+#pad {
+  position: relative;
+  flex: 1;
+  min-height: 340px;
+  overflow: hidden;
+  border: 1px solid #455d5c;
+  border-radius: 22px;
+  background: radial-gradient(circle at 50% 50%, #254840, #17262a 60%, #121c21);
+  touch-action: none;
+  cursor: crosshair;
+}
+
+#hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #c6d9d2;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+#cursor {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin: -13px;
+  border: 2px solid #d8fff2;
+  border-radius: 50%;
+  background: #8ff8d282;
+  box-shadow: 0 0 22px #74e9c4;
+  pointer-events: none;
+  display: none;
+}
+
+footer { display: flex; justify-content: space-between; gap: 16px; color: #a6b6b3; font-size: 0.9rem; }
+
+@media (max-width: 500px) {
+  #pad { min-height: 420px; }
+  footer { font-size: 0.8rem; }
+}
